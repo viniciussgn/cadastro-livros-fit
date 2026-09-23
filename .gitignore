@@ -1,0 +1,29 @@
+# Dependências
+node_modules/
+
+# Variáveis de ambiente (contém credenciais)
+.env
+.env.local
+
+# Build de produção
+dist/
+build/
+
+# Imagens enviadas pelos usuários (dados, não código)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Prisma Client gerado automaticamente (recriado via `prisma generate`)
+backend/src/generated/
+
+# Logs
+npm-debug.log*
+*.log
+
+# Editor
+.vscode/
+.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

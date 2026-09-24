@@ -6,6 +6,8 @@ import {
   atualizarLivro,
   urlDaCapa,
 } from '../services/livroService';
+import { formatarData, dataValida } from '../utils/data';
+import iconeImagem from '../assets/icones/imagem.svg';
 import './FormularioLivro.css';
 
 interface Props {
@@ -48,25 +50,17 @@ export function FormularioLivro({ livroId, aoFechar, aoSalvar }: Props) {
     setPreviewCapa(URL.createObjectURL(arquivo));
   }
 
-  function handleMudarData(e: React.ChangeEvent<HTMLInputElement>) {
-    let valor = e.target.value.replace(/\D/g, '');
-    if (valor.length > 8) valor = valor.slice(0, 8);
-
-    if (valor.length > 4) {
-      valor = `${valor.slice(0, 2)}/${valor.slice(2, 4)}/${valor.slice(4)}`;
-    } else if (valor.length > 2) {
-      valor = `${valor.slice(0, 2)}/${valor.slice(2)}`;
-    }
-
-    setDataPublicacao(valor);
-  }
-
   async function handleSalvar(e: React.FormEvent) {
     e.preventDefault();
     setErro('');
 
     if (!titulo.trim() || !autor.trim()) {
       setErro('Título e autor são obrigatórios.');
+      return;
+    }
+
+    if (dataPublicacao && !dataValida(dataPublicacao)) {
+      setErro('Data de publicação inválida. Use o formato DD/MM/AAAA.');
       return;
     }
 
@@ -119,17 +113,17 @@ export function FormularioLivro({ livroId, aoFechar, aoSalvar }: Props) {
                 type="text"
                 placeholder="Data de publicação"
                 value={dataPublicacao}
-                onChange={handleMudarData}
+                onChange={(e) => setDataPublicacao(formatarData(e.target.value))}
                 maxLength={10}
               />
             </div>
 
             <label className="area-upload">
               {previewCapa ? (
-                <img src={previewCapa} alt="Prévia da capa" />
+                <img src={previewCapa} alt="Prévia da capa" className="preview-capa" />
               ) : (
                 <>
-                  <span>🖼️</span>
+                  <img src={iconeImagem} alt="" className="icone-upload" />
                   <span>Escolher imagem</span>
                 </>
               )}

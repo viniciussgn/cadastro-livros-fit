@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import type { Livro } from '../types/Livro';
 import { listarLivros, urlDaCapa } from '../services/livroService';
 import { FormularioLivro } from './FormularioLivro';
+import iconeLupa from '../assets/icones/lupa.svg';
 import './ListaLivros.css';
 
 export function ListaLivros() {
@@ -39,7 +40,7 @@ export function ListaLivros() {
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
         />
-        <span className="icone-busca">🔍</span>
+        <img src={iconeLupa} alt="" className="icone-busca" />
       </div>
 
       {livrosFiltrados.length === 0 ? (

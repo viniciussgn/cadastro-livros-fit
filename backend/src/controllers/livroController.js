@@ -1,4 +1,17 @@
 const livroService = require('../services/livroService');
+const { validarLivro } = require('../utils/validacao');
+
+function montarDados(req) {
+  const dados = {
+    ...req.body,
+    titulo: req.body.titulo?.trim(),
+    autor: req.body.autor?.trim(),
+  };
+  if (req.file) {
+    dados.capaUrl = `/uploads/${req.file.filename}`;
+  }
+  return dados;
+}
 
 async function listar(req, res) {
   try {
@@ -25,22 +38,12 @@ async function buscarPorId(req, res) {
 
 async function criar(req, res) {
   try {
-    const titulo = req.body.titulo?.trim();
-    const autor = req.body.autor?.trim();
-
-    if (!titulo || titulo.length < 2) {
-      return res.status(400).json({ erro: 'Título deve ter pelo menos 2 caracteres' });
-    }
-    if (!autor || autor.length < 2) {
-      return res.status(400).json({ erro: 'Autor deve ter pelo menos 2 caracteres' });
+    const erroValidacao = validarLivro(req.body);
+    if (erroValidacao) {
+      return res.status(400).json({ erro: erroValidacao });
     }
 
-    const dados = { ...req.body, titulo, autor };
-    if (req.file) {
-      dados.capaUrl = `/uploads/${req.file.filename}`;
-    }
-
-    const novoLivro = await livroService.criarLivro(dados);
+    const novoLivro = await livroService.criarLivro(montarDados(req));
     res.status(201).json(novoLivro);
   } catch (erro) {
     console.error(erro);
@@ -55,22 +58,12 @@ async function atualizar(req, res) {
       return res.status(404).json({ erro: 'Livro não encontrado' });
     }
 
-    const titulo = req.body.titulo?.trim();
-    const autor = req.body.autor?.trim();
-
-    if (!titulo || titulo.length < 2) {
-      return res.status(400).json({ erro: 'Título deve ter pelo menos 2 caracteres' });
-    }
-    if (!autor || autor.length < 2) {
-      return res.status(400).json({ erro: 'Autor deve ter pelo menos 2 caracteres' });
+    const erroValidacao = validarLivro(req.body);
+    if (erroValidacao) {
+      return res.status(400).json({ erro: erroValidacao });
     }
 
-    const dados = { ...req.body, titulo, autor };
-    if (req.file) {
-      dados.capaUrl = `/uploads/${req.file.filename}`;
-    }
-
-    const livro = await livroService.atualizarLivro(req.params.id, dados);
+    const livro = await livroService.atualizarLivro(req.params.id, montarDados(req));
     res.json(livro);
   } catch (erro) {
     console.error(erro);

@@ -1,5 +1,5 @@
 .pagina-detalhes {
-  max-width: 1000px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -8,23 +8,33 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .link-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   text-decoration: none;
   color: var(--cor-texto);
   font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.icone-voltar {
+  width: 22px;
+  height: 22px;
 }
 
 .acoes-detalhes {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
 
 .link-editar {
   color: var(--cor-texto);
   font-weight: 600;
+  font-size: 1.1rem;
   background: none;
   padding: 0;
 }
@@ -32,6 +42,7 @@
 .botao-link-excluir {
   color: var(--cor-vermelho);
   font-weight: 600;
+  font-size: 1.1rem;
   background: none;
   padding: 0;
 }
@@ -54,29 +65,27 @@
 .metadados {
   display: flex;
   justify-content: space-between;
-  color: var(--cor-texto-secundario);
+  color: var(--cor-texto);
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
 .info-detalhes p.descricao {
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: justify;
   white-space: pre-wrap;
 }
 
 .capa-detalhes {
-  flex: 0 0 280px;
-  aspect-ratio: 2 / 3;
-  background-color: #d9d9d9;
-  border-radius: var(--raio-borda);
-  overflow: hidden;
+  flex: 0 0 240px;
 }
 
 .capa-detalhes img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
 }
 
 @media (max-width: 700px) {

@@ -4,6 +4,7 @@ import type { Livro } from '../types/Livro';
 import { buscarLivroPorId, excluirLivro, urlDaCapa } from '../services/livroService';
 import { ModalConfirmacao } from '../components/ModalConfirmacao';
 import { FormularioLivro } from './FormularioLivro';
+import iconeVoltar from '../assets/icones/voltar.svg';
 import './DetalhesLivro.css';
 
 export function DetalhesLivro() {
@@ -32,7 +33,10 @@ export function DetalhesLivro() {
   return (
     <div className="pagina-detalhes">
       <div className="cabecalho-detalhes">
-        <Link to="/" className="link-voltar">← Voltar</Link>
+        <Link to="/" className="link-voltar">
+          <img src={iconeVoltar} alt="" className="icone-voltar" />
+          Voltar
+        </Link>
         <div className="acoes-detalhes">
           <button className="link-editar" onClick={() => setMostrarFormulario(true)}>
             Editar

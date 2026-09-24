@@ -1,14 +1,16 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "API REST para cadastro e consulta de livros",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles --forceExit",
-    "postinstall": "prisma skills sync || exit 0"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "pretest": "prisma generate && prisma migrate deploy",
+    "test": "jest --detectOpenHandles --forceExit"
   },
   "keywords": [],
-  "author": "",
+  "author": "Vinícius Gonzalez de Freitas",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {

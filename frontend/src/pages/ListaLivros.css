@@ -1,60 +1,64 @@
 .pagina-lista {
-  max-width: 860px;
+  max-width: 1064px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 64px 32px;
 }
 
 .cabecalho-lista {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
 }
 
 .cabecalho-lista h1 {
-  font-size: 2rem;
   margin: 0;
+  font-size: 40px;
+  font-weight: 600;
 }
 
 .link-novo {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--cor-texto);
   background: none;
   padding: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--cor-texto);
 }
 
 .campo-busca {
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 64px;
 }
 
 .campo-busca input {
   width: 100%;
-  padding: 0.8rem 3rem 0.8rem 1rem;
+  height: 54px;
+  padding: 0 64px 0 16px;
+  font-size: 18px;
 }
 
 .icone-busca {
   position: absolute;
-  right: 1rem;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   pointer-events: none;
 }
 
 .grade-livros {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
+  gap: 48px;
 }
 
 .cartao-livro {
   display: flex;
   flex-direction: column;
-  background-color: var(--cor-branco);
-  border-radius: var(--raio-borda);
+  height: 480px;
+  background-color: var(--cor-cartao);
+  border-radius: var(--raio-cartao);
   overflow: hidden;
   text-decoration: none;
   color: var(--cor-texto);
@@ -63,72 +67,82 @@
 
 .cartao-livro:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .capa-cartao {
-  height: 170px;
-  background-color: #e0e0e2;
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0;
+  height: 212px;
+  padding: 16px;
+  background-color: var(--cor-fundo-imagem);
 }
 
 .capa-cartao img {
-  max-width: 100%;
-  max-height: 100%;
+  display: block;
+  width: 100%;
+  height: 180px;
   object-fit: contain;
 }
 
 .conteudo-cartao {
-  padding: 1rem;
   flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
 }
 
 .conteudo-cartao h3 {
-  margin: 0 0 0.8rem 0;
-  font-size: 1rem;
+  margin: 0;
+  font-size: 20px;
   font-weight: 600;
-  line-height: 1.3;
+  color: var(--cor-texto);
 }
 
 .conteudo-cartao p {
   margin: 0;
-  font-size: 0.8rem;
-  line-height: 1.35;
-  color: var(--cor-texto);
+  font-size: 16px;
+  color: var(--cor-texto-cartao);
   text-align: justify;
-  display: -webkit-box;
-  -webkit-line-clamp: 9;
-  -webkit-box-orient: vertical;
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
 }
 
 .mensagem-vazia {
-  color: var(--cor-texto-secundario);
+  color: var(--cor-placeholder);
   text-align: center;
-  padding: 3rem 0;
+  padding: 48px 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .grade-livros {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 32px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .pagina-lista {
-    padding: 1rem;
+    padding: 32px 16px;
   }
 
   .cabecalho-lista h1 {
-    font-size: 1.5rem;
+    font-size: 32px;
+  }
+
+  .link-novo {
+    font-size: 20px;
+  }
+
+  .campo-busca {
+    margin-bottom: 32px;
   }
 
   .grade-livros {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 24px;
   }
 }

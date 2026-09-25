@@ -1,68 +1,81 @@
 .fundo-modal-formulario {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  z-index: 100;
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
   overflow-y: auto;
 }
 
 .caixa-formulario {
-  background-color: var(--cor-fundo);
-  border-radius: var(--raio-borda);
-  padding: 2rem;
-  max-width: 640px;
   width: 100%;
-  max-height: 90vh;
+  max-width: 780px;
+  max-height: calc(100vh - 32px);
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px;
+  background-color: var(--cor-pagina);
+  border-radius: var(--raio-cartao);
+  box-shadow: var(--sombra-modal);
 }
 
 .caixa-formulario h1 {
+  margin: 0;
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.caixa-formulario form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .linha-formulario {
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  gap: 32px;
 }
 
 .campos-texto {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 32px;
 }
 
 .campos-texto input {
   width: 100%;
+  height: 54px;
 }
 
 .area-upload {
-  flex: 0 0 190px;
-  background-color: var(--cor-branco);
-  border-radius: var(--raio-borda);
+  position: relative;
+  flex: 0 0 240px;
+  height: 226px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
-  cursor: pointer;
-  color: var(--cor-texto-secundario);
-  font-size: 0.9rem;
-  text-align: center;
+  gap: 16px;
+  padding: 16px;
   overflow: hidden;
-  position: relative;
+  cursor: pointer;
+  background-color: var(--cor-cartao);
+  border-radius: var(--raio-campo);
+  color: var(--cor-placeholder);
+  font-size: 16px;
 }
 
 .icone-upload {
-  width: 56px;
-  height: 56px;
+  width: 83px;
+  height: 83px;
 }
 
 .area-upload .preview-capa {
@@ -70,9 +83,9 @@
   inset: 0;
   width: 100%;
   height: 100%;
+  padding: 16px;
   object-fit: contain;
-  background-color: #e0e0e2;
-  padding: 10px;
+  background-color: var(--cor-fundo-imagem);
 }
 
 .area-upload input[type='file'] {
@@ -81,30 +94,37 @@
 
 .caixa-formulario textarea {
   width: 100%;
-  min-height: 160px;
+  height: 200px;
+  padding: 24px 23px;
   resize: vertical;
-  margin-bottom: 1.5rem;
 }
 
 .acoes-formulario {
   display: flex;
   justify-content: center;
-  gap: 2.5rem;
-}
-
-.acoes-formulario .botao {
-  min-width: 180px;
+  gap: 48px;
 }
 
 .erro-formulario {
-  color: var(--cor-vermelho);
-  margin-bottom: 1rem;
+  margin: 0;
   text-align: center;
+  color: var(--cor-texto-perigo);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .caixa-formulario {
-    padding: 1.5rem 1rem;
+    padding: 24px 16px;
+    gap: 24px;
+  }
+
+  .caixa-formulario h1 {
+    font-size: 26px;
+  }
+
+  .caixa-formulario form,
+  .campos-texto,
+  .linha-formulario {
+    gap: 16px;
   }
 
   .linha-formulario {
@@ -114,12 +134,12 @@
   .area-upload {
     flex: 0 0 auto;
     width: 100%;
-    height: 180px;
+    height: 200px;
   }
 
   .acoes-formulario {
     flex-direction: column-reverse;
-    gap: 1rem;
+    gap: 16px;
   }
 
   .acoes-formulario .botao {

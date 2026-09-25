@@ -1,101 +1,116 @@
 .pagina-detalhes {
-  max-width: 860px;
+  max-width: 1064px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 64px 32px;
 }
 
 .cabecalho-detalhes {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2.5rem;
+  align-items: flex-end;
+  margin-bottom: 64px;
 }
 
 .link-voltar {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 12px;
   text-decoration: none;
   color: var(--cor-texto);
+  font-size: 24px;
   font-weight: 600;
-  font-size: 1.1rem;
 }
 
 .icone-voltar {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
 }
 
 .acoes-detalhes {
   display: flex;
-  gap: 1.8rem;
+  gap: 32px;
+}
+
+.link-editar,
+.botao-link-excluir {
+  background: none;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .link-editar {
   color: var(--cor-texto);
-  font-weight: 600;
-  font-size: 1.1rem;
-  background: none;
-  padding: 0;
 }
 
 .botao-link-excluir {
-  color: var(--cor-vermelho);
-  font-weight: 600;
-  font-size: 1.1rem;
-  background: none;
-  padding: 0;
+  color: var(--cor-texto-perigo);
 }
 
 .corpo-detalhes {
   display: flex;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 40px;
 }
 
 .info-detalhes {
-  flex: 1 1 400px;
+  flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .info-detalhes h1 {
-  margin-top: 0;
+  margin: 0;
+  font-size: 40px;
+  font-weight: 600;
 }
 
 .metadados {
   display: flex;
   justify-content: space-between;
-  color: var(--cor-texto);
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 16px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .info-detalhes p.descricao {
-  font-size: 0.9rem;
-  line-height: 1.5;
+  margin: 0;
+  font-size: 16px;
   text-align: justify;
   white-space: pre-wrap;
 }
 
 .capa-detalhes {
-  flex: 0 0 240px;
+  flex: 0 0 300px;
 }
 
 .capa-detalhes img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 460px;
+  object-fit: contain;
+  object-position: top;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 760px) {
   .pagina-detalhes {
-    padding: 1rem;
+    padding: 32px 16px;
   }
 
   .cabecalho-detalhes {
-    flex-wrap: wrap;
-    gap: 1rem;
+    margin-bottom: 32px;
+  }
+
+  .link-voltar,
+  .link-editar,
+  .botao-link-excluir {
+    font-size: 20px;
+  }
+
+  .acoes-detalhes {
+    gap: 20px;
   }
 
   .corpo-detalhes {
@@ -106,12 +121,21 @@
     order: -1;
     flex: 0 0 auto;
     width: 100%;
-    max-width: 220px;
+    max-width: 240px;
     margin: 0 auto;
+  }
+
+  .capa-detalhes img {
+    height: auto;
+  }
+
+  .info-detalhes h1 {
+    font-size: 28px;
   }
 
   .metadados {
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 4px;
+    font-size: 18px;
   }
 }

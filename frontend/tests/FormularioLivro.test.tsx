@@ -32,14 +32,18 @@ describe('FormularioLivro', () => {
     expect(campoData).toHaveValue('17/08/1945');
   });
 
-  it('mostra erro e não salva quando título e autor estão vazios', async () => {
+  it('mantém o botão Salvar desabilitado até título e autor serem preenchidos', async () => {
     const usuario = userEvent.setup();
     render(<FormularioLivro aoFechar={vi.fn()} aoSalvar={vi.fn()} />);
 
-    await usuario.click(screen.getByRole('button', { name: 'Salvar' }));
+    const botaoSalvar = screen.getByRole('button', { name: 'Salvar' });
+    expect(botaoSalvar).toBeDisabled();
 
-    expect(screen.getByText('Título e autor são obrigatórios.')).toBeInTheDocument();
-    expect(criarLivro).not.toHaveBeenCalled();
+    await usuario.type(screen.getByPlaceholderText('Título'), 'Livro de Teste');
+    expect(botaoSalvar).toBeDisabled();
+
+    await usuario.type(screen.getByPlaceholderText('Autor'), 'Autor de Teste');
+    expect(botaoSalvar).toBeEnabled();
   });
 
   it('mostra erro e não salva quando a data é inválida', async () => {

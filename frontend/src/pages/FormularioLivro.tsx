@@ -28,6 +28,8 @@ export function FormularioLivro({ livroId, aoFechar, aoSalvar }: Props) {
   const [erro, setErro] = useState('');
   const [salvando, setSalvando] = useState(false);
 
+  const camposObrigatoriosPreenchidos = titulo.trim() !== '' && autor.trim() !== '';
+
   useEffect(() => {
     if (livroId) {
       carregarLivro(livroId);
@@ -54,7 +56,7 @@ export function FormularioLivro({ livroId, aoFechar, aoSalvar }: Props) {
     e.preventDefault();
     setErro('');
 
-    if (!titulo.trim() || !autor.trim()) {
+    if (!camposObrigatoriosPreenchidos) {
       setErro('Título e autor são obrigatórios.');
       return;
     }
@@ -141,7 +143,11 @@ export function FormularioLivro({ livroId, aoFechar, aoSalvar }: Props) {
             <button type="button" className="botao botao-secundario" onClick={aoFechar}>
               Cancelar
             </button>
-            <button type="submit" className="botao botao-primario" disabled={salvando}>
+            <button
+              type="submit"
+              className="botao botao-primario"
+              disabled={!camposObrigatoriosPreenchidos || salvando}
+            >
               {salvando ? 'Salvando...' : 'Salvar'}
             </button>
           </div>
